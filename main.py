@@ -2,7 +2,9 @@ from tkinter import *
 import requests
 
 def get_quote():
-    data = requests.get(url="https://api.kanye.rest").json()
+    request = requests.get(url="https://api.kanye.rest")
+    request.raise_for_status()
+    data = request.json()
     canvas.itemconfig(quote_text, text=f"{data['quote']}")
     #Write your code here.
 
